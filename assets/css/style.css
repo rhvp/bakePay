@@ -1,0 +1,52 @@
+body{
+    font-family: Raleway, sans-serif;
+    color: #0d0b0b;
+    background: #51c4ff;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-weight: bold
+}
+
+.vendors {
+  font-size: 28px;
+  list-style-type: none;
+  font-weight: bold;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.vendors span {
+    display: inline-block;
+    margin: 0;
+    color: #555;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.payButtons {
+  margin-right: 0;
+}
+
+#list {
+  margin-top: 30px;
+}
+
+#payForm {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+#jumbo-container {
+  margin-top: 30px;
+}

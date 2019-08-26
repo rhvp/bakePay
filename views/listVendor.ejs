@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>List Vendors</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Home</a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/addVendor">Add Vendor</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+
+    <h1>Vendors List</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <ul id="list">
+            <% for (let i=0; i<vendors.length; i++) { %>
+              <li id=<%= vendors[i].recipient_code %> class="vendors"><%= vendors[i].name %>
+                <span class="desc-span"><%= vendors[i].description %></span>
+                <span class="hidden"><%= vendors[i].name %></span>
+                <button type="button" class="payButtons btn btn-primary">Pay</button>
+              </li>
+              <% } %>
+          </ul>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <form id="payForm" action="/paystack/payVendor" method="post">
+          <input id="name" type="text" class="form-control" name="name" disabled placeholder="Recipient Name">
+          <input type="number" class="form-control" name="amount" placeholder="Amount" required>
+          <input id="recipient" type="hidden" class="form-control" name="recipient">
+          <input id="reason" type="hidden" class="form-control" name="reason">
+          <button type="submit" class="btn btn-primary">Send Payment</button>
+        </form>
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      let list = document.querySelector('#list');
+      list.addEventListener('click', (e) => {
+        if (e.target.classList.contains('payButtons')) {
+          let button = e.target;
+          let recipentCode = button.parentElement.getAttribute('id');
+          let vendorName = button.previousElementSibling;
+          let reason = vendorName.previousElementSibling;
+          console.log(recipentCode)
+          let payForm = document.querySelector('#payForm');
+          payForm.elements.namedItem('recipient').value = recipentCode
+          payForm.elements.namedItem('name').value = vendorName.innerHTML;
+          payForm.elements.namedItem('reason').value = reason.innerHTML;
+          payForm.style.display = "block";
+          payForm.scrollIntoView();
+          $('.payButtons').css('display', 'none');
+        }
+      });
+
+    </script>
+  </body>
+</html>

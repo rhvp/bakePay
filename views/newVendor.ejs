@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add New Vendor</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Home</a>
+        </div>
+
+        <div class="navbar-collapse collapse" id="navbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/listVendors">My Vendors</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+
+    <h1>Add New Vendor</h1>
+    <div class="container">
+
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-xs-12">
+            <form class="vendorForm" action="/paystack/addVen" method="post">
+              <input type="text" name="name" class="form-control form-control-lg" value="" placeholder="Full Name">
+              <select class="form-control form-control-lg"  name="bank_code">
+                <% for(let i=0; i < banks.length; i++) { %>
+                  <option class="bank-list" value = <%= banks[i].code %>><%= banks[i].name %></option>
+                  <% } %>
+              </select>
+
+              <input type="text" name="account_number" class="form-control form-control-lg" placeholder="Account Number">
+              <input type="text" name="description" class="form-control form-control-lg" placeholder="Description">
+              <button type="submit" class="btn btn-primary"name="button">Add</button>
+
+            </form>
+          </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>
