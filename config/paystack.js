@@ -1,6 +1,6 @@
 const paystack = (request) => {
 
-  const MyTestKey = 'Bearer sk_test_fc21cc35d895d4a023290fbfa0f30272462bbcf7';
+  const MyTestKey = process.env.Test_key;
 
   const initializePayment = (form, mycallback) => {
     const options = {
@@ -99,22 +99,6 @@ const paystack = (request) => {
     request.post(options, callback);
   }
 
-  const finalizeTransfer = (form, mycallback) => {
-    const options = {
-      url: 'https://api.paystack.co/transfer/finalize_transfer',
-      headers: {
-        authorization: MyTestKey,
-        'content-type': 'application/json',
-        'cache-control': 'no-cache'
-      },
-      form
-    }
-    const callback = (error, response, body) => {
-      return mycallback(error, body)
-    }
-    request.post(options, callback);
-  }
-
   const fetchTransfer = (code, mycallback) => {
     const options = {
       url: 'https://api.paystack.co/transfer/'+encodeURIComponent(code),
@@ -133,7 +117,7 @@ const paystack = (request) => {
 
 
 
-  return{createRecipent, listBanks, listVendors, initiateTransfer, finalizeTransfer, fetchTransfer};
+  return{createRecipent, listBanks, listVendors, initiateTransfer, fetchTransfer};
 }
 
 module.exports = paystack;
