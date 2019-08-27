@@ -56,7 +56,7 @@ const paystack = (request) => {
     const options = {
       url: 'https://api.paystack.co/bank',
       headers: {
-        Authorization: MyTestKey,
+        authorization: MyTestKey,
         'content-type': 'application/json',
         'cache-control': 'no-cache'
       }
@@ -72,7 +72,7 @@ const paystack = (request) => {
     const options = {
       url: 'https://api.paystack.co/transferrecipient',
       headers: {
-        Authorization: MyTestKey,
+        authorization: MyTestKey,
         'content-type': 'application/json',
         'cache-control': 'no-cache'
       }
@@ -87,7 +87,7 @@ const paystack = (request) => {
     const options ={
       url: 'https://api.paystack.co/transfer',
       headers: {
-        Authorization: MyTestKey,
+        authorization: MyTestKey,
         'content-type': 'application/json',
         'cache-control': 'no-cache'
       },
@@ -103,7 +103,7 @@ const paystack = (request) => {
     const options = {
       url: 'https://api.paystack.co/transfer/'+encodeURIComponent(code),
       headers: {
-        Authorization: MyTestKey,
+        authorization: MyTestKey,
         'content-type': 'application/json',
         'cache-control': 'no-cache'
       }
