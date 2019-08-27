@@ -19,6 +19,11 @@ app.use((req, res, next) => {
   res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private')
   next()
 })
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', reason.stack || reason)
+  // Recommended: send the information to sentry.io
+  // or whatever crash reporting service you use
+})
 app.use('/assets', express.static('assets'));
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
