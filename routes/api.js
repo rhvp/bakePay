@@ -27,7 +27,6 @@ router.get('/addVendor', (req, res) => {
 router.post('/paystack/addVen', (req, res) => {
   const form = _.pick(req.body, ['name','account_number', 'bank_code', 'description'])
   form.type = 'nuban';
-  console.log(form);
   createRecipent(form,(error, body) => {
     if (error) {
       console.log(error);
@@ -47,6 +46,7 @@ router.get('/listVendors', (req, res) => {
     response = JSON.parse(body);
 
     const data = response.data;
+    console.log(data);
     res.render('listVendor', {vendors: data});
   })
 });

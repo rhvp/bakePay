@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-md-6 col-xs-12">
           <ul id="list">
-            <% if(vendors) { for (let i=0; i < vendors.length; i++) { %>
+            <% if(vendors) { for (let i=0; i <  vendors.length; i++) { %>
               <li id=<%= vendors[i].recipient_code %> class="vendors"><%= vendors[i].name %>
                 <span class="desc-span"><%= vendors[i].description %></span>
                 <span class="hidden"><%= vendors[i].name %></span>
