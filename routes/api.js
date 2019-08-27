@@ -44,9 +44,9 @@ router.get('/listVendors', (req, res) => {
       return res.redirect('/error');
     }
     response = JSON.parse(body);
-
+    console.log(response);
     const data = response.data;
-    console.log(data);
+
     res.render('listVendor', {vendors: data});
   })
 });
