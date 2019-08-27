@@ -44,11 +44,11 @@ router.get('/listVendors', (req, res) => {
       console.log(error);
       return res.redirect('/error');
     }
-    response = JSON.parse(body)
-    const data = response.data
+    response = JSON.parse(body);
 
+    const data = response.data;
     res.render('listVendor', {vendors: data});
-  });
+  })
 });
 
 router.post('/paystack/payVendor', (req, res) => {
