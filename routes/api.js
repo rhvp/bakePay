@@ -4,7 +4,6 @@ const {createRecipent, listBanks, listVendors, initiateTransfer, fetchTransfer} 
 const _ = require('lodash');
 
 const router = express.Router();
-const Vendor = require('../models/vendors');
 
 router.get('/', (req, res) => {
   res.render('index');
